@@ -18,6 +18,29 @@ namespace ConsoleAppLearnClass
         public int NumberFlat=0;
         static void Main(string[] args)
         {
+            Console.Write("Введите номер задачи: ");
+            bool task = int.TryParse(Console.ReadLine(), out int result);
+
+            if (task)
+            {
+                if (result == 1)
+                {
+                    WriteAddress();
+                }
+                if (result == 2)
+                {
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Номер задачи не введен!");
+            }
+            Console.ReadLine();
+
+        }
+        static void WriteAddress()
+        {
             Address adrOne = new Address
             {
                 Name = "Piter",
@@ -52,7 +75,7 @@ namespace ConsoleAppLearnClass
                 NumberFlat = 8
             };
             Console.Write("Введите фамилию: ");
-            string surName=Console.ReadLine();
+            string surName = Console.ReadLine();
 
             if (surName == "Shilton")
             {
@@ -91,8 +114,7 @@ namespace ConsoleAppLearnClass
             {
                 Console.WriteLine("Такой фамилии нет!");
             }
-            Console.ReadKey();
-
+            
         }
     }
 }
