@@ -14,107 +14,45 @@ namespace ConsoleAppLearnClass
         public string Region="";
         public string City = "";
         public string Street = "";
-        public int NumberBuilding=0;
-        public int NumberFlat=0;
+        public int NumberBuilding = 0;
+        public int NumberFlat = 0;
         static void Main(string[] args)
         {
-            Console.Write("Введите номер задачи: ");
-            bool task = int.TryParse(Console.ReadLine(), out int result);
-
-            if (task)
-            {
-                if (result == 1)
-                {
-                    WriteAddress();
-                }
-                if (result == 2)
-                {
-
-                }
-            }
-            else
-            {
-                Console.WriteLine("Номер задачи не введен!");
-            }
+            Address adr = new Address("Aleksey","Lukin","Russia","Moscow","Moscow","Lesnaya Street",6,11);
+            Console.WriteLine(adr.Name);
+            Console.WriteLine(adr.Surname);
+            Console.WriteLine(adr.Country);
+            Console.WriteLine(adr.Region);
+            Console.WriteLine(adr.City);
+            Console.WriteLine(adr.Street);
+            Console.WriteLine(adr.NumberBuilding);
+            Console.WriteLine(adr.NumberFlat);
             Console.ReadLine();
 
         }
-        static void WriteAddress()
-        {
-            Address adrOne = new Address
-            {
-                Name = "Piter",
-                Surname = "Shilton",
-                Country = "England",
-                Region = "Big London",
-                City = "London",
-                Street = "Trafalgare Square",
-                NumberBuilding = 2,
-                NumberFlat = 3
-            };
-            Address adrTwo = new Address
-            {
-                Name = "Paolo",
-                Surname = "Maldini",
-                Country = "Italy",
-                Region = "Lombardia",
-                City = "Milano",
-                Street = "Porta-Nuova",
-                NumberBuilding = 12,
-                NumberFlat = 13
-            };
-            Address adrThree = new Address
-            {
-                Name = "Aleksey",
-                Surname = "Lukin",
-                Country = "Russia",
-                Region = "Moscow",
-                City = "Moscow",
-                Street = "Lesnaya Street",
-                NumberBuilding = 6,
-                NumberFlat = 8
-            };
-            Console.Write("Введите фамилию: ");
-            string surName = Console.ReadLine();
+        
+        // Обратите внимание на ряд особенностей конструктора. 
+        //Во-первых, конструктор называется как класс.Раз наш класс называется Adress, значит и конструктор должен
+        //называться точно также.
+        //И во-вторых, конструктор, в отличие от других методов класса, не возвращает никакого значения (даже типа void). 
 
-            if (surName == "Shilton")
-            {
-                Console.WriteLine(adrOne.Name);
-                Console.WriteLine(adrOne.Surname);
-                Console.WriteLine(adrOne.Country);
-                Console.WriteLine(adrOne.Region);
-                Console.WriteLine(adrOne.City);
-                Console.WriteLine(adrOne.Street);
-                Console.WriteLine(adrOne.NumberBuilding);
-                Console.WriteLine(adrOne.NumberFlat);
-            }
-            if (surName == "Maldini")
-            {
-                Console.WriteLine(adrTwo.Name);
-                Console.WriteLine(adrTwo.Surname);
-                Console.WriteLine(adrTwo.Country);
-                Console.WriteLine(adrTwo.Region);
-                Console.WriteLine(adrTwo.City);
-                Console.WriteLine(adrTwo.Street);
-                Console.WriteLine(adrTwo.NumberBuilding);
-                Console.WriteLine(adrTwo.NumberFlat);
-            }
-            if (surName == "Lukin")
-            {
-                Console.WriteLine(adrThree.Name);
-                Console.WriteLine(adrThree.Surname);
-                Console.WriteLine(adrThree.Country);
-                Console.WriteLine(adrThree.Region);
-                Console.WriteLine(adrThree.City);
-                Console.WriteLine(adrThree.Street);
-                Console.WriteLine(adrThree.NumberBuilding);
-                Console.WriteLine(adrThree.NumberFlat);
-            }
-            else
-            {
-                Console.WriteLine("Такой фамилии нет!");
-            }
-            
+        public Address(string Name,string Surname, string Country, string Region, string City, string Street, int numberBuilding, int NumberFlat)
+        {
+            this.Name = Name;
+            this.Surname = Surname;
+            this.Country = Country; 
+            this.Region = Region;
+            this.City = City;   
+            this.Street = Street;
+            this.NumberBuilding=6;
+            this.NumberFlat = 11;
         }
     }
 }
+//Что делает наш конструктор? Он записывает передаваемые в него параметры во внутренние переменные 
+//класса.Обратите внимание, что называются они одинаково - NumberFlat и NumberFlat, Name и Name и т.д. Компилятор сначала 
+//ищет локальную переменную с таким именем, и, если не находит, то переменную класса. Поэтому NumberFlat (и другие) -
+//это передаваемые в конструктор параметры.
+//Если же нам надо сослаться на переменную класса (при существовании переменной с таким же именем,
+//как и передаваемый в функцию параметр), то мы используем ключевое слово this. 
+//Оно всегда указывает на текущий экземпляр нашего класса. Таким образом в строчках
