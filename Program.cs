@@ -15,31 +15,41 @@ namespace ConsoleAppLearnClass
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите значения a,b и c больше нуля: ");
-            double a = Convert.ToDouble(Console.ReadLine());
-            double b = Convert.ToDouble(Console.ReadLine());
-            double c = Convert.ToDouble(Console.ReadLine());
-
-             new KvUr(a, b, c);
+            new KvUr();
             
-
             Console.ReadLine();
         }
     }
     class KvUr
     {
+        private double Discriminant;
         private double a;
         private double b;
         private double c;
 
-        public KvUr(double a, double b, double c)
+
+        internal KvUr()
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
+            Input();
 
-            double Discriminant = Math.Pow(b, 2) - (4 * a * c);
+            Discriminant = Math.Pow(b, 2) - (4 * a * c);
 
+            Output();
+        }
+        internal void Input()
+        {
+            Console.WriteLine("Введите значения a,b и c больше нуля: ");
+            a = Convert.ToDouble(Console.ReadLine());
+            b = Convert.ToDouble(Console.ReadLine());
+            c = Convert.ToDouble(Console.ReadLine());
+        }
+        internal void Output()
+        {
+            //this.Discriminant = Discriminant;
+            //this.a = a;
+            //this.b = b;
+            //this.c = c;     
+            
             if (Discriminant > 0)
             {
                 double xOne = (-b + Math.Sqrt(Discriminant)) / 2 / a;
